@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 
-@Controller()
+@Controller('app')
 export class AppController {
   @Get('/health')
   public getHealth(): Record<string, any> {
@@ -12,3 +12,9 @@ export class AppController {
     return { message: 'app is up and running!' };
   }
 }
+
+
+// /app
+// GET : /app/health/:id, geHealth()
+// GET : /app, getAppStatus()
+

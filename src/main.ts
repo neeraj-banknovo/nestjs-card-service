@@ -6,10 +6,12 @@ import * as cookieParser from 'cookie-parser';
 import {
   INestApplication,
   NestApplicationOptions,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { ResponseTransformInterceptor } from './app/interceptors/response.interceptor';
 import { appConfig } from './app/config/config';
-import { LoggerService } from './app/shared/services/logger/logger.service';
+import { LoggerService } from './app/shared/services/logger.service';
 
 async function bootstrap() {
   const opts: NestApplicationOptions = {};

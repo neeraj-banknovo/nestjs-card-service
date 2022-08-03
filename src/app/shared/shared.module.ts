@@ -1,13 +1,12 @@
 import { Module, OnModuleInit } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { LoggerService } from './services/logger/logger.service';
+import { LoggerService } from './services/logger.service';
 import { UtilService } from './services/util.service';
 
 @Module({
-    imports: [ConfigModule],
+    imports: [],
     controllers: [],
     providers: [UtilService],
-    exports: [ConfigModule, UtilService],
+    exports: [UtilService],
 })
 export class SharedModule implements OnModuleInit {
     private readonly logger: LoggerService;

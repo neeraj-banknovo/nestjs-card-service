@@ -4,13 +4,20 @@ import { Repository } from 'typeorm';
 import { Card } from './card.entity';
 import { ICard } from './card.interface';
 import { CreateCardDto } from './card.dto';
-import { UtilService } from 'src/app/shared/services/util.service';
+import { UtilService } from '../../shared/services/util.service';
+import { LoggerService } from '../../shared/services/logger.service';
+import { ObjectMethods } from './card.module';
+import { SomeExistingClass } from './card1.module';
 
 @Injectable()
 export class CardService {
-    constructor(@Inject(PROVIDERS.CARD_REPOSITORY)
-    private readonly cardRepository: Repository<Card>,
-    private readonly utilService: UtilService) { }
+    private logger: LoggerService = new LoggerService(CardService.name);
+    constructor(
+        @Inject(PROVIDERS.CARD_REPOSITORY) private readonly cardRepository: Repository<Card>,
+        @Inject('myObject') private readonly myobject: ObjectMethods,
+        @Inject('someNickName') private readonly someClass: SomeExistingClass,
+        private readonly utilService: UtilService,
+    ) { }
 
     public async listCards(user_id: string, account_id: string): Promise<[ICard[], number]> {
         return this.cardRepository.findAndCount({
@@ -22,6 +29,8 @@ export class CardService {
     }
     
     public async getCard(card_id: string): Promise<ICard> {
+        this.myobject.hello('neeraj');
+        this.someClass.hello();
         return this.cardRepository.findOne({
             where: {
                 id: card_id

@@ -17,6 +17,19 @@ const configs = [appConfig, dbConfig];
     DatabaseModule,
   ],
   controllers: [AppController],
-  providers: [],
+  providers: []
 })
-export class AppModule {}
+export class AppModule { }
+
+// What is NestJs -> IOC/DI
+
+// Graph ->
+
+// module -> root module (AppModule)
+
+// module
+// providers
+// controllers
+
+
+// appModule  -> CardModule -> CardTransactionModule
