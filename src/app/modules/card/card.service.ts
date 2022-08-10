@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { PROVIDERS } from '../../shared/shared.constants';
 import { Repository } from 'typeorm';
 import { Card } from './card.entity';
@@ -6,16 +6,12 @@ import { ICard } from './card.interface';
 import { CreateCardDto } from './card.dto';
 import { UtilService } from '../../shared/services/util.service';
 import { LoggerService } from '../../shared/services/logger.service';
-import { ObjectMethods } from './card.module';
-import { SomeExistingClass } from './card1.module';
 
 @Injectable()
 export class CardService {
     private logger: LoggerService = new LoggerService(CardService.name);
     constructor(
         @Inject(PROVIDERS.CARD_REPOSITORY) private readonly cardRepository: Repository<Card>,
-        @Inject('myObject') private readonly myobject: ObjectMethods,
-        @Inject('someNickName') private readonly someClass: SomeExistingClass,
         private readonly utilService: UtilService,
     ) { }
 
@@ -29,13 +25,17 @@ export class CardService {
     }
     
     public async getCard(card_id: string): Promise<ICard> {
-        this.myobject.hello('neeraj');
-        this.someClass.hello();
-        return this.cardRepository.findOne({
-            where: {
-                id: card_id
-            }
-        });
+        try {
+            const card = await this.cardRepository.findOne({
+                where: {
+                    id: card_id
+                }
+            });
+            if (!card) throw new NotFoundException('Card not found');                
+            return card;
+        } catch (error) {
+            throw error;
+        }
     }
     
     public async createCard(data: CreateCardDto): Promise<Record<string, any>> {
@@ -52,5 +52,13 @@ export class CardService {
             id: newCard.id,
             last_four: newCard.last_four
         };
+    }
+
+    public async getNumberOfCards(): Promise<number> {
+        return this.cardRepository.count();
+    }
+
+    public templateFunction<T>(value: T): T { 
+        return value;
     }
 }

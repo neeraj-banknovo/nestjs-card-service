@@ -4,6 +4,7 @@ import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import { appConfig, dbConfig } from './config/config';
 import { CardModule } from './modules/card/card.module';
+import { CronJobModule } from './crons/cron.module';
 
 const configs = [appConfig, dbConfig];
 
@@ -15,21 +16,9 @@ const configs = [appConfig, dbConfig];
     }),
     CardModule,
     DatabaseModule,
+    CronJobModule
   ],
   controllers: [AppController],
   providers: []
 })
 export class AppModule { }
-
-// What is NestJs -> IOC/DI
-
-// Graph ->
-
-// module -> root module (AppModule)
-
-// module
-// providers
-// controllers
-
-
-// appModule  -> CardModule -> CardTransactionModule

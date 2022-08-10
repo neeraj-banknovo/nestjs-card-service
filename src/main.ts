@@ -6,8 +6,6 @@ import * as cookieParser from 'cookie-parser';
 import {
   INestApplication,
   NestApplicationOptions,
-  UsePipes,
-  ValidationPipe,
 } from '@nestjs/common';
 import { ResponseTransformInterceptor } from './app/interceptors/response.interceptor';
 import { appConfig } from './app/config/config';
