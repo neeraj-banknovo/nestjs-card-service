@@ -1,9 +1,9 @@
-import { CronExpression } from '@nestjs/schedule';
+import { CronExpression, } from '@nestjs/schedule';
 
 export const CRON_EXPRESSION = {
   ...CronExpression,
-  EVERY_20_SECONDS : '*/20 * * * * *',
-  /* 
+  EVERY_20_SECONDS: '*/20 * * * * *',
+  /*
         Add your custom cron expressions here.
 
         * * * * * *

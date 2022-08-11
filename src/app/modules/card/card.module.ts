@@ -1,31 +1,34 @@
-import { MiddlewareConsumer, Module, NestModule, OnModuleInit, Provider, RequestMethod } from '@nestjs/common';
-import { DatabaseModule } from '../../database/database.module';
-import { LoggerService } from '../../shared/services/logger.service';
-import { SharedModule } from '../../shared/shared.module';
-import { CardController } from './card.controller';
-import { cardProviders } from './card.provider';
-import { CardService } from './card.service';
+import { Module, OnModuleInit, Provider, } from '@nestjs/common';
+import { CachingModule, } from '../../caching/caching.module';
+import { DatabaseModule, } from '../../database/database.module';
+import { LoggerService, } from '../../shared/services/logger.service';
+import { SharedModule, } from '../../shared/shared.module';
+import { CardController, } from './controllers/card.controller';
+import { cardProviders, } from './providers/card.provider';
+import { CardService, } from './providers/card.service';
 
 const providers: Provider[] = [
-    CardService,
+  CardService,
 ];
 
 @Module({
-    imports: [
-        SharedModule,
-        DatabaseModule,
-    ],
-    controllers: [CardController],
-    providers: [...cardProviders, ...providers], 
-    exports: [CardService],
+  imports: [
+    SharedModule,
+    DatabaseModule,
+    CachingModule,
+  ],
+  controllers: [ CardController, ],
+  providers: [ ...cardProviders, ...providers, ],
+  exports: [ CardService, ],
 })
 export class CardModule implements OnModuleInit {
-    private readonly logger: LoggerService;
-    constructor() {
-        this.logger = new LoggerService(CardModule.name);
-    }
+  private readonly logger: LoggerService;
 
-    onModuleInit() {
-        this.logger.log('Module initiated and ready');
-    }
+  constructor() {
+    this.logger = new LoggerService(CardModule.name);
+  }
+
+  onModuleInit() {
+    this.logger.log('Module initiated and ready');
+  }
 }

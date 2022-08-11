@@ -1,10 +1,10 @@
-import { ConnectionSource } from './orm.config';
+import { ConnectionSource, } from './orm.config';
 
 export const databaseProvider = [
   {
     provide: 'DATA_SOURCE',
     useFactory: async () => {
-      const dataSource = ConnectionSource
+      const dataSource = ConnectionSource;
       return dataSource.initialize();
     },
   },

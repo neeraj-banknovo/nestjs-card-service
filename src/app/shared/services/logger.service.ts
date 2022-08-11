@@ -7,9 +7,11 @@ import {
 @Injectable()
 export class LoggerService implements ILoggerService {
   private readonly logger: Logger;
+
   constructor(private readonly context: string) {
-    this.logger = new Logger(this.context, { timestamp: true });
+    this.logger = new Logger(this.context, { timestamp: true, });
   }
+
   /**
    * Write a 'log' level log.
    */

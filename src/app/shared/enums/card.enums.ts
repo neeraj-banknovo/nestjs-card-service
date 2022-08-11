@@ -1,14 +1,13 @@
-export enum CARD_VENDOR {
-  PRIVACY = 'PRIVACY',
-};
+export enum CardVendor {
+  PRIVACY = 'PRIVACY'
+}
 
-export enum CARD_CATEGORY {
+export enum CardCategory {
   PHYSICAL = 'PHYSICAL',
-  VIRTUAL = 'VIRTUAL',
-};
+  VIRTUAL = 'VIRTUAL'
+}
 
-export enum CARD_STATUS {
+export enum CardStatus {
   ACTIVE = 'ACTIVE',
-  CLOSED = 'CLOSED',
-};
-
+  CLOSED = 'CLOSED'
+}

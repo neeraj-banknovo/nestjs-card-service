@@ -15,7 +15,15 @@ export interface AppConfig {
   port: number;
 }
 
+export interface CachingConfig {
+  host: string;
+  port: number;
+  ttl: number;
+  max_item: number;
+}
+
 export interface Config {
   appConfig: AppConfig;
   dbConfig: DatabaseConfig;
+  cachingConfig: CachingConfig;
 }

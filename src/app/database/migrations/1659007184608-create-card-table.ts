@@ -1,9 +1,8 @@
-import { MigrationInterface, QueryRunner } from "typeorm"
+import { MigrationInterface, QueryRunner, } from 'typeorm';
 
 export class createCardTable1659007184608 implements MigrationInterface {
-
-    public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`CREATE TABLE "cards" (
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query(`CREATE TABLE "cards" (
             "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
             "vendor" text NOT NULL,
             "category" text NOT NULL,
@@ -17,10 +16,9 @@ export class createCardTable1659007184608 implements MigrationInterface {
             "expiry" text NOT NULL,
             "created_at" TIMESTAMP NOT NULL DEFAULT now(),
             "updated_at" TIMESTAMP NOT NULL DEFAULT now())`);
-    }
+  }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`DROP TABLE "cards"`);
-    }
-
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query('DROP TABLE "cards"');
+  }
 }

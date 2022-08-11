@@ -1,24 +1,24 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { DatabaseModule } from './database/database.module';
-import { ConfigModule } from '@nestjs/config';
-import { appConfig, dbConfig } from './config/config';
-import { CardModule } from './modules/card/card.module';
-import { CronJobModule } from './crons/cron.module';
+import { Module, } from '@nestjs/common';
+import { ConfigModule, } from '@nestjs/config';
+import { AppController, } from './app.controller';
+import { DatabaseModule, } from './database/database.module';
+import { appConfig, cachingConfig, dbConfig, } from './config/config';
+import { CardModule, } from './modules/card/card.module';
+import { CachingModule, } from './caching/caching.module';
 
-const configs = [appConfig, dbConfig];
+const configs = [ appConfig, dbConfig, cachingConfig, ];
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [...configs],
+      load: [ ...configs, ],
     }),
     CardModule,
     DatabaseModule,
-    CronJobModule
+    CachingModule,
   ],
-  controllers: [AppController],
-  providers: []
+  controllers: [ AppController, ],
+  providers: [],
 })
 export class AppModule { }
