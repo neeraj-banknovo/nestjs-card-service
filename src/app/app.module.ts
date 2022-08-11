@@ -5,6 +5,7 @@ import { DatabaseModule, } from './database/database.module';
 import { appConfig, cachingConfig, dbConfig, } from './config/config';
 import { CardModule, } from './modules/card/card.module';
 import { CachingModule, } from './caching/caching.module';
+import { HealthTerminusModule } from './health-terminus/health-terminus.module';
 
 const configs = [ appConfig, dbConfig, cachingConfig, ];
 
@@ -14,6 +15,7 @@ const configs = [ appConfig, dbConfig, cachingConfig, ];
       isGlobal: true,
       load: [ ...configs, ],
     }),
+    HealthTerminusModule,
     CardModule,
     DatabaseModule,
     CachingModule,
