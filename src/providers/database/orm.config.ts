@@ -12,5 +12,5 @@ export const ConnectionSource = new DataSource({
   entities: [
     `${__dirname}../../../modules/**/*.entity{.ts,.js}`,
   ],
-  migrations: [ '../../../migrations/*.js', ],
+  migrations: [ '../../../database/migrations/*.js', ],
 });
