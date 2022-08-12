@@ -1,5 +1,5 @@
 import { DataSource, } from 'typeorm';
-import { dbConfig, } from '../config/config';
+import { dbConfig, } from '../../config/config';
 
 export const ConnectionSource = new DataSource({
   type: 'postgres',
@@ -10,7 +10,7 @@ export const ConnectionSource = new DataSource({
   database: 'card_service',
   logging: true,
   entities: [
-    `${__dirname}../../../app/modules/**/*.entity{.ts,.js}`,
+    `${__dirname}../../../modules/**/*.entity{.ts,.js}`,
   ],
-  migrations: [ 'src/app/database/migrations/*.js', ],
+  migrations: [ '../../../migrations/*.js', ],
 });

@@ -1,6 +1,6 @@
 import { CACHE_MANAGER, Inject, Injectable, } from '@nestjs/common';
 import { Cache, } from 'cache-manager';
-import { cachingConfig, } from '../config/config';
+import { cachingConfig, } from '../../config/config';
 
 const defaultTTL = cachingConfig().ttl;
 

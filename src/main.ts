@@ -6,11 +6,13 @@ import {
   INestApplication,
   NestApplicationOptions,
 } from '@nestjs/common';
-import { AppModule, } from './app/app.module';
-import { ResponseTransformInterceptor, } from './app/interceptors/response.interceptor';
-import { appConfig, } from './app/config/config';
-import { LoggerService, } from './app/shared/services/logger.service';
+import { AppModule, } from './app.module';
+import { ResponseTransformInterceptor, } from './common/interceptors/response.interceptor';
+import { appConfig, } from './config/config';
+import { LoggerService, } from './shared/services/logger.service';
 import { ClusterService } from './cluster';
+
+const env: NodeJS.ProcessEnv = process.env;
 
 async function bootstrap() {
   const opts: NestApplicationOptions = {};

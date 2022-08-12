@@ -1,5 +1,5 @@
 import { IsUUID, IsDefined, } from 'class-validator';
-import { GenericPayload, } from '../../../shared/models/base.dto';
+import { GenericPayload, } from '../../../common/models/base.dto';
 
 export class GetCardsParamsDto {
   @IsUUID()

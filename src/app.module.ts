@@ -1,10 +1,10 @@
 import { Module, } from '@nestjs/common';
 import { ConfigModule, } from '@nestjs/config';
 import { AppController, } from './app.controller';
-import { DatabaseModule, } from './database/database.module';
+import { DatabaseModule, } from './providers/database/database.module';
 import { appConfig, cachingConfig, dbConfig, } from './config/config';
 import { CardModule, } from './modules/card/card.module';
-import { CachingModule, } from './caching/caching.module';
+import { CachingModule, } from './providers/caching/caching.module';
 import { HealthTerminusModule } from './health-terminus/health-terminus.module';
 
 const configs = [ appConfig, dbConfig, cachingConfig, ];

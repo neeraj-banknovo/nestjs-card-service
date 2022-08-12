@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 const cluster = require('cluster');
 import * as os from 'os';
-import { LoggerService } from './app/shared/services/logger.service';
+import { LoggerService } from './shared/services/logger.service';
 
 const env: NodeJS.ProcessEnv = process.env;
 

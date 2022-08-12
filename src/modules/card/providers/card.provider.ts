@@ -1,5 +1,5 @@
 import { DataSource, } from 'typeorm';
-import { PROVIDERS, } from '../../../shared/shared.constants';
+import { PROVIDERS, } from '../../../common/constants/common.constants';
 import { Card, } from '../entity/card.entity';
 
 export const cardProviders = [

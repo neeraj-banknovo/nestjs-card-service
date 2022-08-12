@@ -1,6 +1,6 @@
 import { Injectable, } from '@nestjs/common';
 import { v4 as uuidv4, } from 'uuid';
-import { CardCategory, CardStatus, CardVendor, } from '../enums/card.enums';
+import { CardCategory, CardStatus, CardVendor, } from '../../common/enums/card.enums';
 
 interface DummyCard {
   external_card_id: string;

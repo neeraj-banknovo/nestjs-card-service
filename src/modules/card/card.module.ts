@@ -1,6 +1,6 @@
 import { Module, OnModuleInit, Provider, } from '@nestjs/common';
-import { CachingModule, } from '../../caching/caching.module';
-import { DatabaseModule, } from '../../database/database.module';
+import { CachingModule, } from '../../providers/caching/caching.module';
+import { DatabaseModule, } from '../../providers/database/database.module';
 import { LoggerService, } from '../../shared/services/logger.service';
 import { SharedModule, } from '../../shared/shared.module';
 import { CardController, } from './controllers/card.controller';

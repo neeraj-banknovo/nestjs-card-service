@@ -1,12 +1,12 @@
 import { Inject, Injectable, NotFoundException, } from '@nestjs/common';
 import { Repository, } from 'typeorm';
-import { PROVIDERS, } from '../../../shared/shared.constants';
+import { PROVIDERS, } from '../../../common/constants/common.constants';
 import { Card, } from '../entity/card.entity';
 import { ICard, } from '../card.interface';
 import { CreateCardDto, } from '../dto/card.dto';
 import { UtilService, } from '../../../shared/services/util.service';
 import { LoggerService, } from '../../../shared/services/logger.service';
-import { CachingService, } from '../../../caching/caching.service';
+import { CachingService, } from '../../../providers/caching/caching.service';
 
 @Injectable()
 export class CardService {
