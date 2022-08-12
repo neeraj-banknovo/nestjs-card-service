@@ -1,6 +1,6 @@
 import { Inject, Injectable, NotFoundException, } from '@nestjs/common';
 import { Repository, } from 'typeorm';
-import { PROVIDERS, } from '../../../common/constants/common.constants';
+import { PROVIDERS, } from '../../../common/constants';
 import { Card, } from '../entity/card.entity';
 import { ICard, } from '../card.interface';
 import { CreateCardDto, } from '../dto/card.dto';
