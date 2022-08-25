@@ -18,6 +18,5 @@ export const CRON_EXPRESSION = {
         Asterisk (e.g. *)
         Ranges (e.g. 1-3,5)
         Steps (e.g. * / 2)
-        
      */
 };

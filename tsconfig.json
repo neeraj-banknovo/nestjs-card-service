@@ -11,10 +11,7 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"]
 }

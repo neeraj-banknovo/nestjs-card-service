@@ -3,9 +3,9 @@ import { CachingModule, } from '../../providers/caching/caching.module';
 import { DatabaseModule, } from '../../providers/database/database.module';
 import { LoggerService, } from '../../shared/services/logger.service';
 import { SharedModule, } from '../../shared/shared.module';
-import { CardController, } from './controllers/card.controller';
 import { cardProviders, } from './providers/card.provider';
 import { CardService, } from './providers/card.service';
+import { CardResolver, } from './resolver/card.resolver';
 
 const providers: Provider[] = [
   CardService,
@@ -17,8 +17,7 @@ const providers: Provider[] = [
     DatabaseModule,
     CachingModule,
   ],
-  controllers: [ CardController, ],
-  providers: [ ...cardProviders, ...providers, ],
+  providers: [ CardResolver, ...cardProviders, ...providers, ],
   exports: [ CardService, ],
 })
 export class CardModule implements OnModuleInit {

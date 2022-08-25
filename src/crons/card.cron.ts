@@ -10,7 +10,7 @@ export class CardCronHandler {
 
   constructor(
     // list your deps here
-    private cardService: CardService,
+    private cardService: CardService
   ) {}
 
   @Cron(CRON_EXPRESSION.EVERY_5_SECONDS) // schedule(expression, new CardCronHandler().execute())

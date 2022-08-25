@@ -7,12 +7,8 @@ import {
   NestApplicationOptions,
 } from '@nestjs/common';
 import { AppModule, } from './app.module';
-import { ResponseTransformInterceptor, } from './common/interceptors/response.interceptor';
 import { appConfig, } from './config/config';
 import { LoggerService, } from './shared/services/logger.service';
-import { ClusterService } from './cluster';
-
-const env: NodeJS.ProcessEnv = process.env;
 
 async function bootstrap() {
   const opts: NestApplicationOptions = {};
@@ -20,9 +16,8 @@ async function bootstrap() {
     AppModule,
     opts
   );
-  app.useGlobalInterceptors(new ResponseTransformInterceptor());
   app.setGlobalPrefix('api');
-  app.use(helmet());
+  app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false, }));
   app.use(compression());
   app.use(cookieParser());
   app.enableCors();
@@ -34,5 +29,7 @@ async function bootstrap() {
     }`
   );
 }
+bootstrap();
 
-ClusterService.scale(bootstrap);
+// to run in cluster mode with max core(s)
+// ClusterService.scale(bootstrap);

@@ -40,5 +40,5 @@ export const cachingConfig = (): CachingConfig => ({
 
 export const configFun = {
   isDevEnvironment: () => appConfig().env !== 'production',
-  isProduction : ()=> appConfig().env === 'production',
-}
+  isProduction: () => appConfig().env === 'production',
+};

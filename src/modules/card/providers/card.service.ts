@@ -3,7 +3,7 @@ import { Repository, } from 'typeorm';
 import { PROVIDERS, } from '../../../common/constants';
 import { Card, } from '../entity/card.entity';
 import { ICard, } from '../card.interface';
-import { CreateCardDto, } from '../dto/card.dto';
+import { CreateCardInput, } from '../dto/card.dto';
 import { UtilService, } from '../../../shared/services/util.service';
 import { LoggerService, } from '../../../shared/services/logger.service';
 import { CachingService, } from '../../../providers/caching/caching.service';
@@ -27,32 +27,29 @@ export class CardService {
   }
 
   public async getCard(card_id: string): Promise<ICard> {
-    try {
-      const card = await this.cardRepository.findOne({
-        where: {
-          id: card_id,
-        },
-      });
-      if (!card) throw new NotFoundException('Card not found');
-      return card;
-    } catch (error) {
-      throw error;
-    }
+    const card = await this.cardRepository.findOne({
+      where: {
+        id: card_id,
+      },
+    });
+    if (!card) throw new NotFoundException('Card not found');
+    return card;
   }
 
-  public async createCard(data: CreateCardDto): Promise<Record<string, any>> {
-    const { account_id, user_id, nick_name, } = data;
+  public async createCard(data: CreateCardInput): Promise<Record<string, any>> {
+    const { accountId, userId, nickName, } = data;
     const card = this.utilService.generateCard();
     const cardData: Card = {
-      account_id,
-      user_id,
-      nick_name,
+      account_id: accountId,
+      user_id: userId,
+      nick_name: nickName,
       ...card,
     } as any;
     const newCard = await this.cardRepository.save(cardData);
     return {
       id: newCard.id,
       last_four: newCard.last_four,
+      nick_name: newCard.nick_name,
     };
   }
 

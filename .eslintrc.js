@@ -30,14 +30,16 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'class-methods-use-this': 'off',
     'max-classes-per-file': 'off',
+    'no-plusplus': 'off',
     '@typescript-eslint/no-useless-constructor': 'off',
     '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-unused-expressions': 'off',
     '@typescript-eslint/comma-dangle': ['error', {
       'arrays': 'always',
       'objects': 'always',
       'imports': 'always',
       'exports': 'always',
       'functions': 'never'
-    },]
+    },],
   },
 };

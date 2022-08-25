@@ -1,32 +1,27 @@
+import { InputType, Field, ArgsType, } from '@nestjs/graphql';
 import { IsUUID, IsDefined, } from 'class-validator';
-import { GenericPayload, } from '../../../common/models/base.dto';
 
-export class GetCardsParamsDto {
-  @IsUUID()
-  @IsDefined()
-    userId: string;
-}
-
-export class GetCardParamsDto {
+@ArgsType()
+export class GetCardByIdArgs {
   @IsUUID()
   @IsDefined()
     id: string;
 }
 
-export class CreateCardDto {
+@InputType()
+export class CreateCardInput {
   @IsUUID()
   @IsDefined()
-    user_id: string;
+  @Field(() => String)
+    userId: string;
 
   @IsUUID()
   @IsDefined()
-    account_id: string;
+  @Field(() => String)
+    accountId: string;
 
   @IsUUID()
   @IsDefined()
-    nick_name: string;
-}
-
-export class CreateCardPayload extends GenericPayload<CreateCardDto> {
-  public data!: CreateCardDto;
+  @Field(() => String)
+    nickName: string;
 }

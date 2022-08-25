@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Card {
+  account_id: String!
+  category: String!
+  created_at: String!
+  expiry: String!
+  external_card_id: String!
+  id: String!
+  last_four: String!
+  nick_name: String!
+  status: String!
+  type: String!
+  updated_at: String!
+  user_id: String!
+  vendor: String!
+}
+
+input CreateCardInput {
+  accountId: String!
+  nickName: String!
+  userId: String!
+}
+
+type Mutation {
+  createCard(createCardInput: CreateCardInput!): Card!
+}
+
+type Query {
+  getCardById(id: String!): Card!
+}
