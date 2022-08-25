@@ -3,7 +3,6 @@ import { ConfigModule, } from '@nestjs/config';
 import { ApolloDriver, ApolloDriverConfig, } from '@nestjs/apollo';
 import { GraphQLModule, } from '@nestjs/graphql';
 import { GraphQLError, } from 'graphql';
-import { AppController, } from './app.controller';
 import { DatabaseModule, } from './providers/database/database.module';
 import { appConfig, cachingConfig, dbConfig, } from './config/config';
 import { CardModule, } from './modules/card/card.module';
@@ -35,7 +34,7 @@ const configs = [ appConfig, dbConfig, cachingConfig, ];
     DatabaseModule,
     CachingModule,
   ],
-  controllers: [ AppController, ],
+  controllers: [],
   providers: [],
 })
 export class AppModule { }
